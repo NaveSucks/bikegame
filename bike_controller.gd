@@ -113,6 +113,8 @@ func _unhandled_input(event):
 		brake_input += 1.0
 
 func _physics_process(delta):
+	# Apply gravity
+	bike_frame.apply_force(Vector3(0, -BIKE_MASS * 9.8, 0))
 	# --- Steering ---
 	steer_angle = clamp(steer_angle + steer_input * STEER_SPEED * delta, -STEER_ANGLE_MAX, STEER_ANGLE_MAX)
 	# Move front wheel left/right
